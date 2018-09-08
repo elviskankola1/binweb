@@ -2,55 +2,8 @@
 <html>
 <head>
 	<title>BEAN</title>
-	<link rel="stylesheet" type="text/css" href="ressources/css/bootstrap.css"  media="all">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap.css"  media="all">
 </head>
-<style type="text/css">
-form{
-    color: white;
-}
-input[type=text] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: none;
-    background-color:rgba(0, 0,0,0.0);
-    pointer-events: pointer;
-    color: white;
-    font-size: 200%;
-    font-family:'Noto Sans Mono CJK TC Bold';
-}
-	#input{
-		position:  absolute;
-		width: 100%;
-		margin-top: 0%;
-		height: 700%;
-		background-color: rgba(0, 0,0,0.8);
-		color: white;
-	}
-	
-	#back{
-		position:  absolute;
-		width: 100%;
-		margin-top: 0%;
-		height: 300%;
-		background-image: url('ressources/images/back.jpg');
-		background-position: bottom;
-		background-repeat: no-repeat;
-		background-size: 180%;
-		color: white;
-	}
-	
-	a{
-		text-decoration: none;
-		color: white;
-	}
-	#inp{
-		color: white;
-	}
-
-</style>
 <body>
 	
 	<div id="back">
