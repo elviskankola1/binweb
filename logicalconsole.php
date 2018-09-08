@@ -147,12 +147,7 @@ input[type=text] {
 
     					}
     				}
-    			}elseif ( is_executable($cmd)) {
-                    
-                    $modif =exec($cmd);
-                    echo "<h3 style='font-family:Noto Sans Mono CJK TC Bold'><b> $modif <span style='color: green;'>En cours...</span></h3>"; 
-
-                }elseif( $cmd != null AND !$a->command_your_os($cmd)) {
+    			}elseif( $cmd != null AND !$a->command_your_os($cmd)) {
     				echo "<h3 style='font-family:Noto Sans Mono CJK TC Bold'><b> Votre commande est introuvable...<img src='ressources/images/stop.gif' width='2%'></h3>";
     		}elseif(empty($cmd) OR !isset($cmd)){
                 echo false;
