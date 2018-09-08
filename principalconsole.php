@@ -112,25 +112,24 @@
 					<img class="img-circle border-effect1" src="ressources/images/a.jpg" width="50px"/>
 				</div>
 				<div id="hdd">
-					<?php
-						require 'classe/fluxdossier.php';
-    	    			$partition = getcwd();
-    	    			$space_total = disk_total_space($partition);
-    	    			$space_free = disk_free_space($partition);
-    	    			$gb_total= $space_total/1024**3;
-    	    			$gb_free= $space_free/1024**3;
-    	    			$print_total = ceil($gb_total);
-    	    			$print_free = ceil($gb_free);
-    	    			$free = $print_total-$print_free;
-    	    			echo "<h4><img class='img-circle border-effect1' src='ressources/images/ordi.jpg' width='50px'/> <b> $free/$print_total Go</b></h4>";
-    	    			require_once 'classe/fluxdossier.php';
-    	    			$a = new flux;
-    	    			if (!isset($_POST['choice']) OR empty($_POST['choice'])) {
-    	    				$a->theme_nav('$');
-    	    			}else{
-    	    				$a->theme_nav($_POST['choice']);
-    	    			}
-					?>
+				<?php
+					$partition = getcwd();
+					$space_total = disk_total_space($partition);
+					$space_free = disk_free_space($partition);
+					$gb_total= $space_total/1024**3;
+					$gb_free= $space_free/1024**3;
+					$print_total = ceil($gb_total);
+					$print_free = ceil($gb_free);
+					$free = $print_total-$print_free;
+					echo "<h4><img class='img-circle border-effect1' src='ressources/images/ordi.jpg' width='50px'/> <b> $free/$print_total Go</b></h4>";
+					require_once 'fluxdossier.php';
+					$a = new flux;
+					if (!isset($_POST['choice']) OR empty($_POST['choice'])) {
+						$a->theme_nav('$');
+					}else{
+						$a->theme_nav($_POST['choice']);
+					}
+				?>
 				</div>
 			</div>
 		</div>
@@ -150,7 +149,7 @@
     			<h1>AIDES <b style="color: blue;">?</b></h1>
     			<hr>
     			<p>ICI DE L'OPTION</p>
-    			<form action="b.php" method="post">
+    			<form action="principalconsole.php" method="post">
     				<select name ='choice'>
 	    				<option value="#">GREEN</option>
 	    				<option value="*">BLUE</option>
