@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>BEAN ET JAMES</title>
+	<title>BINWEB-CONSOLE</title>
 	<link rel="stylesheet" type="text/css" href="ressources/css/bootstrap.css">
 </head>
 <style type="text/css">
