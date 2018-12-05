@@ -165,16 +165,16 @@ class Flux{
                             height: 9%;
                             background-color:blue;}
                     #back{
-                        position:  absolute;
-                        width: 100%;
-                        margin-top: 0%;
-                        height: 300%;
-                        background-image: url('ressources/images/a.jpg');
-                        background-position: bottom;
-                        background-repeat: no-repeat;
-                        background-size: 180%;
-                        color: white;
-                    }
+                            position: absolute;
+                            width: 100%;
+                            margin-top: 0%;
+                            height: 300%;
+                            background-image: url('ressources/images/back.jpg');
+                            background-position: bottom;
+                            background-repeat: no-repeat;
+                            background-size: 180%;
+                            color: white;
+                        }
                 </style>";
             }
         if ($caracter=='$') {
