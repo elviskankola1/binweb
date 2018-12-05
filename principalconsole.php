@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>BEAN ET JAMES</title>
+	<title></></title>
 	<link rel="stylesheet" type="text/css" href="ressources/css/bootstrap.css">
 </head>
 <body>
@@ -42,17 +42,17 @@
     	    			echo "<h4><img class='img-circle border-effect1' src='ressources/images/ordi.jpg' width='50px'/> <b> $free/$print_total Go</b></h4>";
     	    			require_once 'classe/fluxdossier.php';
     	    			$a = new flux;
-    	    			if (!isset($_POST['choice']) OR empty($_POST['choice'])) {
+    	    			if (!isset($_POST['color']) OR empty($_POST['color'])) {
     	    				$a->theme_nav('$');
     	    			}else{
-    	    				$a->theme_nav($_POST['choice']);
+    	    				$a->theme_nav($_POST['color']);
     	    			}
 					?>
 				</div>
 			</div>
 		</div>
 	</div>
-	<iframe src="logicalconsole.php" name="iframe_a"  width="100%" height="500px"></iframe>
+	<iframe src="logicalconsole.php" name="iframe_a"  width="100%" height="1000px"></iframe>
 	<div id="myModal" class="modal">
   		<div class="modal-content">
     		<span class="close">×</span>
@@ -64,18 +64,30 @@
 	<div id="myModal2" class="modal">
   		<div class="modal-content">
     		<span class="close">×</span>
-    			<h1>AIDES <b style="color: blue;">?</b></h1>
-    			<hr>
-    			<p>ICI DE L'OPTION</p>
-    			<form action="b.php" method="post">
-    				<select name ='choice'>
+    			<h1>Couleur Console</h1><hr>
+    			<form action="" method="post" style="color:black;">
+    				<select name ='color'>
 	    				<option value="#">GREEN</option>
 	    				<option value="*">BLUE</option>
 	    				<option value="$">DEFAUT</option>
-	    				<input type="submit" name="">
+	    				<input type="submit" value ="Change">
     				</select>
     			</form>
   		</div>
+		  <div class="modal-content">
+    		<span class="close">×</span>
+    			<h1>Ecriture Cosole <b style="color: blue;">?</b></h1>
+    			<hr>
+    			<form action="" method="post" style="color:black;">
+    				<select name ='font'>
+	    				<option value="#">ubuntu</option>
+	    				<option value="*">debian</option>
+	    				<option value="$">Kali</option>
+	    				<input type="submit" value ="Change">
+    				</select>
+    			</form>
+  		</div>
+
 	</div>
 </body>
 <script>
