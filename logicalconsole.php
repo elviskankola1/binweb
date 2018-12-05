@@ -37,7 +37,7 @@ input[type=text] {
 		height: 300%;
 		background-image: url('ressources/images/back.jpg');
 		background-position: bottom;
-		background-repeat: no-repeat;
+		background-repeat: repeat;
 		background-size: 180%;
 		color: white;
 	}
