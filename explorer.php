@@ -108,12 +108,11 @@
 
 <html>
 <head>
-<title>
 	<title></></title>
 	<link rel="stylesheet" type="text/css" href="ressources/css/bootstrap.css">
 </title>
 </head>
-<body>
+<body style=" background-image: url(ressources/images/explore_back.jpeg); background-repeat: no-repeat; background-size:50%; background-position:top;">
 	<div id="head">
 		<div class="navbar">
 			<div class="container-fluid">
@@ -158,7 +157,7 @@
 			</div>
 		</div>
 	</div><br><br><br><br><br><br><br><br><br>
-<h3>Explorateur - /<?php echo $currentdir; ?></h3>
+<h3>U-Explorer /<?php echo $currentdir; ?></h3>
 
 <table border=1 width=100% >
 <tr><td colspan=2>
@@ -166,7 +165,7 @@
 <tr><td>
 <a href="<? echo $rootdir?>" style="color:black;">Racine</a> | 
 <a href="<? echo $_self . "?action=mkdir&path=" . urlencode($currentdir); ?>" style="color:black;">Creer Repertoire</a> |  
-<a href="<? echo $_self . "?action=upload&path=" . urlencode($currentdir); ?>" style="color:black;">Uploader</a>
+<a href="<? echo $_self . "?action=upload&path=" . urlencode($currentdir); ?>" style="color:black;">Modifier</a>
 </td></tr>
 </table>
 </td></tr>
@@ -204,8 +203,6 @@
 	</table>
 </td>
 <td valign=top width=80%>
-	<!-- Colonne pour les fichiers -->
-
 	<table border=0 width=100% height=100%>
 	<tr><td colspan=3>
 		<table border=1 width=100%>
