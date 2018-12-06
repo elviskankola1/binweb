@@ -125,7 +125,6 @@
 </title>
 </head>
 <body>
-<h1></h1><hr>
 	<div id="head">
 		<div class="navbar">
 			<div class="container-fluid">
@@ -169,20 +168,17 @@
 				</div>
 			</div>
 		</div>
-	</div><br><br><br>
+	</div><br><br><br><br><br><br><br><br><br>
 <BIG><BIG>Explorateur - /<?php echo $currentdir; ?></BIG></BIG>
 
-<table border=1 width=100%>
+<table border=1 width=100% styl="color:black;">
+<caption></caption>
 <tr><td colspan=2>
-
-<!-- Toolbar -->
 <table width="100%">
 <tr><td>
 <a href="<? echo $_self . "?path=";  ?>">Racine</a> | 
 <a href="<? echo $_self . "?action=mkdir&path=" . urlencode($currentdir); ?>">Creer Repertoire</a> |  
 <a href="<? echo $_self . "?action=upload&path=" . urlencode($currentdir); ?>">Uploader</a>
-</td><td align=right>
-Deconnecter
 </td></tr>
 </table>
 <?php
@@ -301,11 +297,14 @@ if ( $affiche_upload_formulaire )
 				// selon l'extension du fichier
 				$ext = strtolower(substr($file,strrpos($file,".") + 1,strlen($file) - strrpos($file,".")));
 				echo "</td><td>";
+				echo "<br>";
+				echo "<img src='ressources/images/fichier.png' width='3%'> ";
 				echo "      "."<a href=\"" . $rootdir . "/" . $currentdir . "/" . $file . "\" style='color:black'>" . $file . "</a>";
 				echo "</td><td align=right width=15%>";
-				echo filesize($rootdir . "/" . $currentdir . "/" . $file );
-				echo "&nbsp;&nbsp;<h5><a href=\"" . "?action=rm&path=" . urlencode($currentdir) . "&file=" . urlencode($file) . "\" style='color:black'>X</a></h5>";
+				echo "<h5 style='text-align:center;'>".filesize($rootdir . "/" . $currentdir . "/" . $file )." octets</h5>";
+				//echo "&nbsp;&nbsp;<h5><a href=\"" . "?action=rm&path=" . urlencode($currentdir) . "&file=" . urlencode($file) . "\" style='color:black; text-decoration:none;'>Supp</a></h5>";
 				echo "</td></tr>\n";
+				
 			}
 		}
 		closedir($directory);	
