@@ -130,7 +130,7 @@
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="explorer.php">Explorer</a>
+						<a href="principalconsole.php">Console</a>
 					</li>
 					<li>
 						<a href="#" id="myBtn">Affichage</a>
@@ -171,69 +171,15 @@
 	</div><br><br><br><br><br><br><br><br><br>
 <BIG><BIG>Explorateur - /<?php echo $currentdir; ?></BIG></BIG>
 
-<table border=1 width=100% styl="color:black;">
-<caption></caption>
+<table border=1 width=100% >
 <tr><td colspan=2>
-<table width="100%">
+<table width="100%" style="color:black;">
 <tr><td>
-<a href="<? echo $_self . "?path=";  ?>">Racine</a> | 
-<a href="<? echo $_self . "?action=mkdir&path=" . urlencode($currentdir); ?>">Creer Repertoire</a> |  
-<a href="<? echo $_self . "?action=upload&path=" . urlencode($currentdir); ?>">Uploader</a>
+<a href="<? echo $rootdir?>" style="color:black;">Racine</a> | 
+<a href="<? echo $_self . "?action=mkdir&path=" . urlencode($currentdir); ?>" style="color:black;">Creer Repertoire</a> |  
+<a href="<? echo $_self . "?action=upload&path=" . urlencode($currentdir); ?>" style="color:black;">Uploader</a>
 </td></tr>
 </table>
-<?php
-
-if ( $affiche_creer_formulaire )
-{
-	// affichage du formulaire pour creer un repertoire
-	?>
-	<hr>
-	<form method="get">
-	<input type="hidden" name="path" value="<? echo $currentdir ?>" />
-	<input type="hidden" name="action" value="mkdir" />
-	Nom du repertoire : <input type="text" name="arg" value=""/>
-	<input type="submit" value="Creer" />
-	</form>
-	<?php
-}
-
-if ( $affiche_supprimer_formulaire ==true)
-{
-	// affichage du formulaire pour supprimer un repertoire
-	?>
-	<hr>
-	<form method="get">
-	<input type="hidden" name="path" value="<? echo $currentdir ?>" />
-	<?
-	if ( isset($_GET['file']) )
-		echo "<input type=\"hidden\" name=\"file\" value=\"" . $_GET['file'] . "\" />";
-	?>
-	<input type="hidden" name="action" value="rm" />
-	Supprimer <? echo $currentdir . "/"; if (isset($_GET['file'])) echo $_GET['file']; ?> ? 
-	<input type="submit" name="confirmation" value="Oui" />
-	<input type="submit" name="infirmation" value="Non" />
-	</form>
-	<?php
-}else{
-	echo '';
-}
-
-if ( $affiche_upload_formulaire )
-{
-	?>
-	<hr>
-	<form enctype="multipart/form-data" method="post">
-	Fichier : <input name="uploadFile" type="file" id="uploadFile" />
-	<input type="hidden" name="action" value="upload" />
-	<input type="hidden" name="path" value="<? echo urlencode($currentdir);?>">
-	<input type="submit" name="submit" value="Uploader" />
-	&nbsp;&nbsp;<input type="checkbox" name="date" CHECKED/>Dater le fichier
-	</form>
-	<?php
-}
-
-?>
-
 </td></tr>
 <tr>
 <td valign=top width=20%>
@@ -279,7 +225,7 @@ if ( $affiche_upload_formulaire )
 		<table border=1 width=100%>
 		<tr>
 		<td width=75%><b>Noms</b></td>
-		<td width=25% align=right><b>Taille</b></td>
+		<td width=25% align=left><b>Taille</b></td>
 		</tr>
 		</table>
 	</td></tr>
@@ -298,12 +244,12 @@ if ( $affiche_upload_formulaire )
 				$ext = strtolower(substr($file,strrpos($file,".") + 1,strlen($file) - strrpos($file,".")));
 				echo "</td><td>";
 				echo "<br>";
-				echo "<img src='ressources/images/fichier.png' width='3%'> ";
+				echo "<img src='ressources/images/fichier.png' width='2.5%'> ";
 				echo "      "."<a href=\"" . $rootdir . "/" . $currentdir . "/" . $file . "\" style='color:black'>" . $file . "</a>";
 				echo "</td><td align=right width=15%>";
 				echo "<h5 style='text-align:center;'>".filesize($rootdir . "/" . $currentdir . "/" . $file )." octets</h5>";
 				//echo "&nbsp;&nbsp;<h5><a href=\"" . "?action=rm&path=" . urlencode($currentdir) . "&file=" . urlencode($file) . "\" style='color:black; text-decoration:none;'>Supp</a></h5>";
-				echo "</td></tr>\n";
+				echo "</td></tr>";
 				
 			}
 		}
