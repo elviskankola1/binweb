@@ -9,40 +9,32 @@
 	}
 	
 	$currentdir = $_GET['path'];
-	
-	// on tronque le debut si c'est un /
+
 	if ( substr($currentdir,0,1) == "/" )
 	{
 		$currentdir = substr($currentdir,1,strlen($currentdir) - 1);
 	}
 	
-	// si la fin de $currentdir = .. alors on retourne a la racine de ce dossier
 	if ( substr($currentdir, strlen($currentdir) - 2, 2) == ".." )
 	{
 		// strip last /..
 		$currentdir = substr($currentdir, 0, strlen($currentdir) - 3);
 		
-		// strip last /dirname
 		$currentdir = substr($currentdir, 0, strrpos($currentdir,"/"));
 	}
 	
-	// si la fin de $currentdir = /. alors on retourne a la racine de ce dossier
 	if ( substr($currentdir, strlen($currentdir) - 2, 2) == "/." )
 	{
 		$currentdir = substr($currentdir, 0,strlen($currentdir) - 2);
 	}
 	
-	// evite tout probleme de securite MAISempeche les nom de rep avec .. dedans
 	$currentdir = str_replace("..", "", $currentdir);
-
-	// on traite les actions spÃ©ciales
 	$action = $_GET['action'];
 	switch($action)
 	{
 		case "mkdir":
 			if ( isset($_GET['arg'] ) )
 			{
-				// evite tout probleme de securite MAIS empeche les nom de rep avec .. dedans
 				$mkdir = str_replace("..", "", $_GET['arg']);
 				umask (0);
 				mkdir($rootdir . "/" . $currentdir . "/" . $mkdir);			
@@ -57,7 +49,6 @@
 		case "rm";
 			if ( isset($_GET['confirmation'] ) )
 			{
-				// evite tout probleme de securite MAIS empeche les nom de rep avec .. dedans
 				$rm = str_replace("..", "", $_GET['path']);
 				
 				if ( isset($_GET['file']) )
@@ -73,9 +64,7 @@
 					$affiche_supprimer_formulaire=false;
 
 			}
-			// si l'on ne supprimait pas un fichier (donc un rep, on doit retourner a la racine quelque soit la reponse
 			if ( ( isset($_GET['confirmation']) || isset($_GET['infirmation']) ) && ! isset($_GET['file']) )
-				// strip last /dirname pour retourner au parent du rep en cours
 				$currentdir = substr($currentdir, 0, strrpos($currentdir,"/"));					
 			break;
 			
@@ -169,7 +158,7 @@
 			</div>
 		</div>
 	</div><br><br><br><br><br><br><br><br><br>
-<BIG><BIG>Explorateur - /<?php echo $currentdir; ?></BIG></BIG>
+<h3>Explorateur - /<?php echo $currentdir; ?></h3>
 
 <table border=1 width=100% >
 <tr><td colspan=2>
@@ -183,8 +172,6 @@
 </td></tr>
 <tr>
 <td valign=top width=20%>
-	<!-- Colonne pour les repertoires -->
-	
 	<table border=0 width=100% height=100%>
 	<tr><td colspan=3>
 		<table border=1 width=100%>
@@ -199,7 +186,6 @@
 		{
 			if (is_dir( $rootdir . "/" . $currentdir . "/" . $dir) && $dir != "." )
 			{
-				// on affiche pas le ..  quand on est a la racine
 				if( $currentdir == "" && $dir != ".." || $currentdir != "")
 				{
 					echo "<tr><td width=30 height=30>";
@@ -239,8 +225,6 @@
 			{
 				$foundone = true;
 				echo "<tr><td width=30 height=35>";
-			
-				// selon l'extension du fichier
 				$ext = strtolower(substr($file,strrpos($file,".") + 1,strlen($file) - strrpos($file,".")));
 				echo "</td><td>";
 				echo "<br>";
