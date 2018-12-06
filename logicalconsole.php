@@ -66,7 +66,6 @@ input[type=text] {
             <div class="col-md-10" style="left: 2%;">
                  <input type='text' name='cmd' id="inp" placeholder=">>>"> 
             </div>
-			<?php echo $_GET['path'];?>
         </form>
 		<?php
 
