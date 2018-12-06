@@ -169,7 +169,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><br><br><br>
 <BIG><BIG>Explorateur - /<?php echo $currentdir; ?></BIG></BIG>
 
 <table border=1 width=100%>
@@ -263,7 +263,7 @@ if ( $affiche_upload_formulaire )
 					echo "<tr><td width=30 height=30>";
 					echo "<img src='ressources/images/dossier.jpeg' width='110%'> ";
 					echo "</td><td width=80%>";
-					echo "<a href=\"?path=" . urlencode($currentdir) . "/" . urlencode($dir) . "\"><button style ='width:50%;'>" . $dir . "</button></a>";
+					echo "<a href=\"?path=" . urlencode($currentdir) . "/" . urlencode($dir) . "\"><h3 style ='width:40%;color:black;'>" . $dir . "</h3></a>";
 					echo "</td><td align=right>&nbsp;";
 					if ( $dir != ".." )
 						echo "<a href=\"" . "?action=rm&path=" . urlencode($currentdir) . "/" . urlencode($dir) . "\">X</a>";
@@ -300,25 +300,11 @@ if ( $affiche_upload_formulaire )
 			
 				// selon l'extension du fichier
 				$ext = strtolower(substr($file,strrpos($file,".") + 1,strlen($file) - strrpos($file,".")));
-				switch($ext)
-				{
-					case "gif":
-					case "jpg":
-					case "png":
-						echo "<img width=30 height=28 src=\"miniature.php?gd=2&maxw=30&src=" . $rootdir . "/" . urlencode($currentdir) . "/" . urlencode($file) . "\"/>";
-						break;
-					default:
-						if ( is_file( $imagedir . "/" . $ext . ".gif" ) )
-							echo "<img width=30 height=28 src=\"miniature.php?gd=2&maxw=30&src=" . $imagedir . "/" . $ext . ".gif" . "\"/>";
-						else
-							echo strtoupper($ext);
-						break;
-				}
 				echo "</td><td>";
-				echo "<a href=\"" . $rootdir . "/" . $currentdir . "/" . $file . "\">" . $file . "</a>";
+				echo "      "."<a href=\"" . $rootdir . "/" . $currentdir . "/" . $file . "\" style='color:black'>" . $file . "</a>";
 				echo "</td><td align=right width=15%>";
 				echo filesize($rootdir . "/" . $currentdir . "/" . $file );
-				echo "&nbsp;&nbsp;<a href=\"" . "?action=rm&path=" . urlencode($currentdir) . "&file=" . urlencode($file) . "\">X</a>";
+				echo "&nbsp;&nbsp;<h5><a href=\"" . "?action=rm&path=" . urlencode($currentdir) . "&file=" . urlencode($file) . "\" style='color:black'>X</a></h5>";
 				echo "</td></tr>\n";
 			}
 		}
@@ -335,5 +321,39 @@ if ( $affiche_upload_formulaire )
 </tr>
 </table>
 </body>
+<script>
+var modal = document.getElementById('myModal');
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+</script>
+<script type="text/javascript">
+	var modal = document.getElementById('myModal2');
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 </html>
 
