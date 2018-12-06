@@ -13,7 +13,7 @@
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="#">Fichier</a>
+						<a href="explorer.php">Explorer</a>
 					</li>
 					<li>
 						<a href="#" id="myBtn">Affichage</a>
