@@ -141,6 +141,7 @@ class Flux{
                             width: 100%;
                             margin-top: -3%;
                             height: 9%;
+                            font-family:ubuntu;
                             background-color:green;}
                     #back{
                         position:  absolute;
@@ -163,6 +164,7 @@ class Flux{
                             width: 100%;
                             margin-top: -3%;
                             height: 9%;
+                            font-family:ubuntu;
                             background-color:blue;}
                     #back{
                             position: absolute;
@@ -185,6 +187,7 @@ class Flux{
                         width: 100%;
                         margin-top: -3%;
                         height: 9%;
+                        font-family:ubuntu;
                         background-color: rgb(0, 100, 100);
                     }
                     #back{
