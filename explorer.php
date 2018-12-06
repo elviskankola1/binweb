@@ -69,6 +69,8 @@
 			{
 				if( ! isset($_GET['infirmation']))
 					$affiche_supprimer_formulaire=true;
+				else
+					$affiche_supprimer_formulaire=false;
 
 			}
 			// si l'on ne supprimait pas un fichier (donc un rep, on doit retourner a la racine quelque soit la reponse
@@ -153,7 +155,7 @@ if ( $affiche_creer_formulaire )
 	<?php
 }
 
-if ( $affiche_supprimer_formulaire )
+if ( $affiche_supprimer_formulaire ==true)
 {
 	// affichage du formulaire pour supprimer un repertoire
 	?>
@@ -170,6 +172,8 @@ if ( $affiche_supprimer_formulaire )
 	<input type="submit" name="infirmation" value="Non" />
 	</form>
 	<?php
+}else{
+	echo '';
 }
 
 if ( $affiche_upload_formulaire )
@@ -211,12 +215,12 @@ if ( $affiche_upload_formulaire )
 				if( $currentdir == "" && $dir != ".." || $currentdir != "")
 				{
 					echo "<tr><td width=30 height=30>";
-					echo "<img width=30 height=28 src=\"" . $imagedir . "/dir.png\">";
+					echo "<img src='ressources/images/dossier.jpeg' width='100%'> ";
 					echo "</td><td width=80%>";
-					echo "<a href=\"" . $_self . "?path=" . urlencode($currentdir) . "/" . urlencode($dir) . "\">" . $dir . "</a>";
+					echo "<a href=\"?path=" . urlencode($currentdir) . "/" . urlencode($dir) . "\">" . $dir . "</a>";
 					echo "</td><td align=right>&nbsp;";
 					if ( $dir != ".." )
-						echo "<a href=\"" . $_self . "?action=rm&path=" . urlencode($currentdir) . "/" . urlencode($dir) . "\">X</a>";
+						echo "<a href=\"" . "?action=rm&path=" . urlencode($currentdir) . "/" . urlencode($dir) . "\">X</a>";
 					echo "</td></tr>\n";
 				}
 			}
@@ -268,7 +272,7 @@ if ( $affiche_upload_formulaire )
 				echo "<a href=\"" . $rootdir . "/" . $currentdir . "/" . $file . "\">" . $file . "</a>";
 				echo "</td><td align=right width=15%>";
 				echo filesize($rootdir . "/" . $currentdir . "/" . $file );
-				echo "&nbsp;&nbsp;<a href=\"" . $_self . "?action=rm&path=" . urlencode($currentdir) . "&file=" . urlencode($file) . "\">X</a>";
+				echo "&nbsp;&nbsp;<a href=\"" . "?action=rm&path=" . urlencode($currentdir) . "&file=" . urlencode($file) . "\">X</a>";
 				echo "</td></tr>\n";
 			}
 		}
