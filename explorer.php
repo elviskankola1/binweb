@@ -120,17 +120,63 @@
 <html>
 <head>
 <title>
-	Explorateur de fichier - /<?php echo $currentdir; ?>
+	<title></></title>
+	<link rel="stylesheet" type="text/css" href="ressources/css/bootstrap.css">
 </title>
 </head>
 <body>
+<h1></h1><hr>
+	<div id="head">
+		<div class="navbar">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="explorer.php">Explorer</a>
+					</li>
+					<li>
+						<a href="#" id="myBtn">Affichage</a>
+					</li>
+					<li>
+						<a href="#">OS</a>
+					</li>
+					<li>
+						<a href="#" id="myBtn">Aide?</a>
+					</li>
+				</ul>
+				<div id="profil">
+					<img class="img-circle border-effect1" src="ressources/images/a.jpg" width="50px"/>
+				</div>
+				<div id="hdd">
+					<?php
+						require 'classe/fluxdossier.php';
+    	    			$partition = getcwd();
+    	    			$space_total = disk_total_space($partition);
+    	    			$space_free = disk_free_space($partition);
+    	    			$gb_total= $space_total/1024**3;
+    	    			$gb_free= $space_free/1024**3;
+    	    			$print_total = ceil($gb_total);
+    	    			$print_free = ceil($gb_free);
+    	    			$free = $print_total-$print_free;
+    	    			echo "<h4><img class='img-circle border-effect1' src='ressources/images/ordi.jpg' width='50px'/> <b> $free/$print_total Go</b></h4>";
+    	    			require_once 'classe/fluxdossier.php';
+    	    			$a = new flux;
+    	    			if (!isset($_POST['color']) OR empty($_POST['color'])) {
+    	    				$a->theme_nav('$');
+    	    			}else{
+    	    				$a->theme_nav($_POST['color']);
+    	    			}
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
 <BIG><BIG>Explorateur - /<?php echo $currentdir; ?></BIG></BIG>
 
 <table border=1 width=100%>
 <tr><td colspan=2>
 
 <!-- Toolbar -->
-<table width=100%>
+<table width="100%">
 <tr><td>
 <a href="<? echo $_self . "?path=";  ?>">Racine</a> | 
 <a href="<? echo $_self . "?action=mkdir&path=" . urlencode($currentdir); ?>">Creer Repertoire</a> |  
@@ -215,9 +261,9 @@ if ( $affiche_upload_formulaire )
 				if( $currentdir == "" && $dir != ".." || $currentdir != "")
 				{
 					echo "<tr><td width=30 height=30>";
-					echo "<img src='ressources/images/dossier.jpeg' width='100%'> ";
+					echo "<img src='ressources/images/dossier.jpeg' width='110%'> ";
 					echo "</td><td width=80%>";
-					echo "<a href=\"?path=" . urlencode($currentdir) . "/" . urlencode($dir) . "\">" . $dir . "</a>";
+					echo "<a href=\"?path=" . urlencode($currentdir) . "/" . urlencode($dir) . "\"><button style ='width:50%;'>" . $dir . "</button></a>";
 					echo "</td><td align=right>&nbsp;";
 					if ( $dir != ".." )
 						echo "<a href=\"" . "?action=rm&path=" . urlencode($currentdir) . "/" . urlencode($dir) . "\">X</a>";
